@@ -62,4 +62,25 @@ const ordinalSearchStyles = {
     },   
 }
 
-  export { ordinalSearchStyles, ordinalResultStyles }
+const ordinalDetailStyles = {
+    detailsHeaderContainer: {
+        height: '88px',
+        width: '100%',
+    },
+    detailsHeaderTextContainer: {
+        marginTop: '54px',
+        display: 'flex'
+    },
+    detailsHeaderText: {
+        width: '100%',
+        textAlign: 'center',
+        color: '#fff'
+    },
+    chevronLeft: {
+        marginLeft: '27px',
+        width: '9px',
+        height: '16px'
+    }
+}
+
+  export { ordinalSearchStyles, ordinalResultStyles, ordinalDetailStyles }
