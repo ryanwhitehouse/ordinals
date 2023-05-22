@@ -4,13 +4,24 @@ const ordinalResultStyles = {
     resultsLabel: {
         paddingTop: '10px',
         paddingLeft: '21px',
-        fontSize: '14px'
+        fontSize: '14px',
+        marginBottom: '24px'
     },
     noResultsLabel: {
         paddingTop: '10px',
         paddingLeft: '21px',
         fontSize: '18px',
         textAlign: 'center'
+    },
+    resultContainer: {
+        height: '49px',
+        flex: 1,
+        marginLeft: '22px',
+    },
+    chevronRight: {
+        marginRight: '27px',
+        width: '9px',
+        height: '16px'
     }
 }
 
@@ -33,6 +44,7 @@ const ordinalSearchStyles = {
         height: '32px',
         marginLeft: '16px',
         marginRight: '17px',
+        marginBottom: '10px',
         backgroundColor,
         color: '#fff',
         display: 'block',
@@ -45,7 +57,8 @@ const ordinalSearchStyles = {
         width: 'calc(100% - 33px)',
         marginLeft: '16px',
         marginRight: '17px',
-        height: '46px'
+        height: '46px',
+        borderRadius: '12px'
     },   
 }
 

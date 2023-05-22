@@ -10,6 +10,7 @@ test('Renders no results correctly', () => {
 
 test('Renders results correctly', () => {
     render(<Results searchResults={[{id: '12345678'}, {id: '4567890'}]} />);
+    
     const resultsLabel = screen.getByText(/results/i);
     const firstInscription = screen.getByText(/inscription 12345/i);
     const secondInscription = screen.getByText(/inscription 45678/i);
