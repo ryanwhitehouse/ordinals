@@ -68,8 +68,8 @@ const ordinalSearchStyles = {
 
 const ordinalDetailStyles = {
     detailsHeaderContainer: {
-        height: '88px',
         width: '100%',
+        marginBottom: '17px'
     },
     detailsHeaderTextContainer: {
         marginTop: '54px',
@@ -119,6 +119,16 @@ const ordinalDetailStyles = {
         marginTop: '24px',
         marginLeft: '17px',
         marginBottom: '33px'
+    },
+    image: {
+        height: '375px',
+        width: '375px'
+    },
+    imageContainer: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 }
 

@@ -1,11 +1,27 @@
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query';
 
-import { getOrdinalDetails } from './ordinalApi'
+import { getOrdinalDetails, getOrdinalImageDetails } from './ordinalApi'
 import { ordinalDetailStyles } from './styles'
 
 const stringShortener = (inputString) => {
     return `${inputString.substring(0, 14)}..${inputString.substring(inputString.length - 14, inputString.length)}`
+}
+
+const ImageData = ({ordinalId, data, isImage}) => {
+    if (isImage) {
+        return (
+            <div style={ordinalDetailStyles.imageContainer}>
+                <img style={ordinalDetailStyles.image} alt='ordinal' src={`https://ordinals.com/content/${ordinalId}`}></img>
+            </div> 
+        )
+    }
+    
+    return (
+        <div style={ordinalDetailStyles.imageContainer}>
+            {JSON.stringify(data, null, 2)}
+        </div> 
+    )
 }
 
 const OrdinalDetails = () => {
@@ -16,9 +32,13 @@ const OrdinalDetails = () => {
         return getOrdinalDetails(ordinalId)
     });
 
-    if (loading) return "Loading...";
+    const { loading: imageLoading, error: imageError, data: imageData } = useQuery([`ordinal-details-image-${ordinalId}`], () => {
+        return getOrdinalImageDetails(ordinalId)
+    });
 
+    if (loading) return "Loading...";
     if (error) return `Error! ${error.message}`;
+    if (imageError) return `Error! ${error.message}`;
     
     return (
         <div>
@@ -33,6 +53,10 @@ const OrdinalDetails = () => {
                 </div>
             </div>
             
+            {!!imageData && !imageLoading && !!data &&
+                <ImageData data={imageData} ordinalId={ordinalId} isImage={data.metadata["content type"]?.includes('image')} />
+            }
+
             {!!data &&
             <>
                 <div style={ordinalDetailStyles.inscriptionLabel}>{data?.inscriptionNumber}</div>
@@ -76,5 +100,3 @@ const OrdinalDetails = () => {
 }
 
 export default OrdinalDetails
-
-// <img style={{width: '375px', height: '375px'}} alt='ordinal' src='..'></img>

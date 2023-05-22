@@ -38,4 +38,12 @@ const getOrdinalDetails = async (ordinalId) => {
     return response
 }
 
-export { getAddressData, getOrdinalData, getOrdinalDetails }
+const getOrdinalImageDetails = async (ordinalId) => {
+    const response = await axios.get(`https://ordinals.com/content/${ordinalId}`)
+        .then(response => response.data)
+        .catch(_ => Promise.resolve({})) // TODO: Need to handle this error case
+        
+    return response
+}
+
+export { getAddressData, getOrdinalData, getOrdinalDetails, getOrdinalImageDetails }
