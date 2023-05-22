@@ -1,5 +1,6 @@
 import { useState } from "react";
 import fakeData from './fakeData.json'
+import { backgroundColor } from './theme'
 
 function OrdinalSearch() {
   const [address, setAddress] = useState()
@@ -13,7 +14,17 @@ function OrdinalSearch() {
 
   return (
     <div>
-      <div>Ordinal Inscription Lookup</div>      
+      <div style={{
+        background: backgroundColor,
+        paddingTop: '54px',
+        paddingBottom: '17px',
+
+        textAlign: 'center',
+        fontWeight: 500,
+        fontSize: '14px',
+        lineHeight: '17px',
+        color: 'white'
+      }}>Ordinal Inscription Lookup</div>      
 
       <label htmlFor="addressInput">Owner Bitcoin Address</label>      
       <input id="addressInput" type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
