@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { getOrdinalData } from './ordinalApi'
 
+import Results from './Results'
+
 import { ordinalSearchStyles } from './styles'
 import './index.css';
 
@@ -23,19 +25,7 @@ function OrdinalSearch() {
 
       <button style={ordinalSearchStyles.lookupButton} onClick={handleLookup}>Look up</button>
 
-    {searchResults && searchResults.length > 0 &&
-      <div>
-        <div style={ordinalSearchStyles.resultsLabel}>Results</div>
-
-        <p>{searchResults?.map(result => `Inscription ${result.id?.substring(0,5)}`)}</p>
-      </div>
-    }
-
-    {searchResults && searchResults.length <= 0 &&
-      <div>
-        <div style={ordinalSearchStyles.noResultsLabel}>No results found</div>
-      </div>
-    }
+      <Results searchResults={searchResults} />
     </div>
   );
 }

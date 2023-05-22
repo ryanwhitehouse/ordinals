@@ -1,5 +1,19 @@
 import { backgroundColor } from './theme'
 
+const ordinalResultStyles = {
+    resultsLabel: {
+        paddingTop: '10px',
+        paddingLeft: '21px',
+        fontSize: '14px'
+    },
+    noResultsLabel: {
+        paddingTop: '10px',
+        paddingLeft: '21px',
+        fontSize: '18px',
+        textAlign: 'center'
+    }
+}
+
 const ordinalSearchStyles = {
     title: {
         backgroundColor,
@@ -32,18 +46,7 @@ const ordinalSearchStyles = {
         marginLeft: '16px',
         marginRight: '17px',
         height: '46px'
-    },
-    resultsLabel: {
-        paddingTop: '10px',
-        paddingLeft: '21px',
-        fontSize: '14px'
-    },
-    noResultsLabel: {
-        paddingTop: '10px',
-        paddingLeft: '21px',
-        fontSize: '18px',
-        textAlign: 'center'
-    }
+    },   
 }
 
-  export { ordinalSearchStyles }
+  export { ordinalSearchStyles, ordinalResultStyles }

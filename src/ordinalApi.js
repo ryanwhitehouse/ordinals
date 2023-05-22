@@ -20,7 +20,7 @@ const checkOrdinalData = async (transactionId, outputIndex) => {
 const getOrdinalData = async (address) => {
     const data = await getAddressData(address)
 
-    // TODO: This will need changing to handle large data sets
+    // TODO: This will need changing to handle large data sets (pagination?)
     const ordinalData = await Promise.all(data.map(async txRow => {
         const ordinalData = await checkOrdinalData(txRow.txid, txRow.vout)
 
