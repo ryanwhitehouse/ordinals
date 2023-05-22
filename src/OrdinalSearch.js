@@ -9,8 +9,7 @@ function OrdinalSearch() {
   const [searchResults, setSearchResults] = useState(null)
 
   const handleLookup = async () => {
-    // const addressDataDecoded = JSON.parse(fakeData.addressData)
-    const addressDataDecoded = await getAddressData()
+    const addressDataDecoded = await getAddressData(address)
 
     setSearchResults(addressDataDecoded)
   }
