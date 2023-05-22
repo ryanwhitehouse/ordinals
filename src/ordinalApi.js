@@ -30,4 +30,12 @@ const getOrdinalData = async (address) => {
     return ordinalData.filter(x => x.id)
 }
 
-export { getAddressData, getOrdinalData }
+const getOrdinalDetails = async (ordinalId) => {
+    const response = await axios.get(`https://api.xverse.app/v1/ordinals/${ordinalId}`)
+        .then(response => response.data)
+        .catch(_ => Promise.resolve({})) // TODO: Need to handle this error case
+
+    return response
+}
+
+export { getAddressData, getOrdinalData, getOrdinalDetails }
