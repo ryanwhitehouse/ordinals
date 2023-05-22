@@ -39,8 +39,6 @@
     "@testing-library/user-event": "^14.4.3"
   },
   "jest": {
-    "moduleNameMapper": {
-      "axios": "axios/dist/node/axios.cjs"
-    }
+    "transformIgnorePatterns": ["node_modules/(?!axios)/\""]
   }
 }
