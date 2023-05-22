@@ -15,15 +15,18 @@ function OrdinalSearch() {
     <div>
       <div>Ordinal Inscription Lookup</div>      
 
-      <div>Owner Bitcoin Address</div>      
-
-      <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+      <label htmlFor="addressInput">Owner Bitcoin Address</label>      
+      <input id="addressInput" type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
 
       <button onClick={handleLookup}>Look up</button>
 
-      <div>Search Results</div>
+    {searchResults && 
+      <div>
+        <div>Results</div>
 
-      <p>{searchResults?.map(result => result.txid + '\n')}</p>
+        <p>{searchResults?.map(result => result.txid + '\n')}</p>
+      </div>
+    }
     </div>
   );
 }
