@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getAddressData } from './ordinalApi'
+import { getOrdinalData } from './ordinalApi'
 
 import { ordinalSearchStyles } from './styles'
 import './index.css';
@@ -9,9 +9,9 @@ function OrdinalSearch() {
   const [searchResults, setSearchResults] = useState(null)
 
   const handleLookup = async () => {
-    const addressDataDecoded = await getAddressData(address)
+    const addressData = await getOrdinalData(address)
 
-    setSearchResults(addressDataDecoded)
+    setSearchResults(addressData)
   }
 
   return (
@@ -27,7 +27,7 @@ function OrdinalSearch() {
       <div>
         <div style={ordinalSearchStyles.resultsLabel}>Results</div>
 
-        <p>{searchResults?.map(result => result.txid + '\n')}</p>
+        <p>{searchResults?.map(result => `Inscription ${result.id?.substring(0,5)}`)}</p>
       </div>
     }
 
