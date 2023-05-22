@@ -2,15 +2,41 @@ import { backgroundColor } from './theme'
 
 const ordinalSearchStyles = {
     title: {
-        background: backgroundColor,
+        backgroundColor,
         paddingTop: '54px',
         paddingBottom: '17px',
 
         textAlign: 'center',
-        fontWeight: 500,
-        fontSize: '14px',
-        lineHeight: '17px',
-        color: 'white'
+    },
+    addressLabel: {
+        backgroundColor,
+        paddingTop: '10px',
+        paddingLeft: '16px',
+        paddingBottom: '10px',
+        display: 'block'
+    },
+    addressInput: {
+        height: '32px',
+        marginLeft: '16px',
+        marginRight: '17px',
+        backgroundColor,
+        color: '#fff',
+        display: 'block',
+        width: 'calc(100% - 33px)'
+    },
+    lookupButton: {
+        backgroundColor: '#465AE9',
+        color: '#fff',
+        display: 'block',
+        width: 'calc(100% - 33px)',
+        marginLeft: '16px',
+        marginRight: '17px',
+        height: '46px'
+    },
+    resultsLabel: {
+        paddingTop: '10px',
+        paddingLeft: '21px',
+        fontSize: '14px'
     }
 }
 

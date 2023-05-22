@@ -1,6 +1,7 @@
 import { useState } from "react";
 import fakeData from './fakeData.json'
 import { ordinalSearchStyles } from './styles'
+import './index.css';
 
 function OrdinalSearch() {
   const [address, setAddress] = useState()
@@ -14,16 +15,16 @@ function OrdinalSearch() {
 
   return (
     <div>
-      <div style={ordinalSearchStyles.title}>Ordinal Inscription Lookup</div>      
+      <div style={ordinalSearchStyles.title}>Ordinal Inscription Lookup</div>        
 
-      <label htmlFor="addressInput">Owner Bitcoin Address</label>      
-      <input id="addressInput" type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+      <label htmlFor="addressInput" style={ordinalSearchStyles.addressLabel}>Owner Bitcoin Address</label>      
+      <input id="addressInput" type="text" style={ordinalSearchStyles.addressInput} value={address} onChange={(e) => setAddress(e.target.value)} />
 
-      <button onClick={handleLookup}>Look up</button>
+      <button style={ordinalSearchStyles.lookupButton} onClick={handleLookup}>Look up</button>
 
     {searchResults && 
       <div>
-        <div>Results</div>
+        <div style={ordinalSearchStyles.resultsLabel}>Results</div>
 
         <p>{searchResults?.map(result => result.txid + '\n')}</p>
       </div>
