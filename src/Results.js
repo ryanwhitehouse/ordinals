@@ -2,8 +2,7 @@ import { ordinalResultStyles } from "./styles"
 
 const SingleResultRow = ({searchResult}) => {
     return (
-        // TODO: Fix styling of the link
-        <a href={`/ordinal/${searchResult.id}`}>
+        <a style={ordinalResultStyles.link} href={`/ordinal/${searchResult.id}`}>
             <div style={{display: 'flex', justifyContent: 'flex-end'}}>
                 <div style={ordinalResultStyles.resultContainer}>{`Inscription ${searchResult?.id?.substring(0,5)}`}</div>
                 <div style={ordinalResultStyles.chevronRight}>

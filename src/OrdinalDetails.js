@@ -4,9 +4,12 @@ import { useQuery } from '@tanstack/react-query';
 import { getOrdinalDetails } from './ordinalApi'
 import { ordinalDetailStyles } from './styles'
 
+const stringShortener = (inputString) => {
+    return `${inputString.substring(0, 14)}..${inputString.substring(inputString.length - 14, inputString.length)}`
+}
+
 const OrdinalDetails = () => {
 
-    debugger
     const { ordinalId } = useParams()
 
     const { loading, error, data } = useQuery([`ordinal-details-${ordinalId}`], () => {
@@ -29,11 +32,49 @@ const OrdinalDetails = () => {
                     <div style={ordinalDetailStyles.detailsHeaderText}>Details</div>
                 </div>
             </div>
-            <img style={{width: '375px', height: '375px'}} alt='ordinal' src='..'></img>
-            <div>Inscription Number: {data?.inscriptionNumber}</div>
-            <div>Metadata: {JSON.stringify(data?.metadata)}</div>
+            
+            {!!data &&
+            <>
+                <div style={ordinalDetailStyles.inscriptionLabel}>{data?.inscriptionNumber}</div>
+                
+                <div style={ordinalDetailStyles.metadataLabel}>Inscription ID</div>
+                <div style={ordinalDetailStyles.metadataField}>{data.metadata.id}</div>
+
+                <div style={ordinalDetailStyles.metadataLabel}>Owner Address</div>
+                <div style={ordinalDetailStyles.metadataField}>{data.metadata.address}</div>
+                
+                <div style={ordinalDetailStyles.attributesLabel}>Attributes</div>
+
+                <div style={ordinalDetailStyles.metadataLabel}>Output Value</div>
+                <div style={ordinalDetailStyles.attributeContainer}>
+                    <div style={ordinalDetailStyles.attributeField}>{data.metadata["output value"]}</div>
+                </div>
+
+                <div style={ordinalDetailStyles.metadataLabel}>Content Type</div>
+                <div style={ordinalDetailStyles.attributeContainer}>
+                    <div style={ordinalDetailStyles.attributeField}>{data.metadata["content type"]}</div>
+                </div>
+
+                <div style={ordinalDetailStyles.metadataLabel}>Content Length</div>
+                <div style={ordinalDetailStyles.attributeContainer}>
+                    <div style={ordinalDetailStyles.attributeField}>{data.metadata["content length"]}</div>
+                </div>
+
+                <div style={ordinalDetailStyles.metadataLabel}>Location</div>
+                <div style={ordinalDetailStyles.attributeContainer}>
+                    <div style={ordinalDetailStyles.attributeField}>{stringShortener(data.metadata.location)}</div>
+                </div>
+
+                <div style={ordinalDetailStyles.metadataLabel}>Genesis Transaction</div>
+                <div style={ordinalDetailStyles.attributeContainer}>
+                    <div style={ordinalDetailStyles.attributeField}>{stringShortener(data.metadata["genesis transaction"])}</div>
+                </div>
+            </>
+            }
         </div>
     )
 }
 
 export default OrdinalDetails
+
+// <img style={{width: '375px', height: '375px'}} alt='ordinal' src='..'></img>

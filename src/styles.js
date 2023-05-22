@@ -5,7 +5,11 @@ const ordinalResultStyles = {
         paddingTop: '10px',
         paddingLeft: '21px',
         fontSize: '14px',
-        marginBottom: '24px'
+        marginBottom: '24px',
+    },
+    link: {
+        color: '#fff',
+        textDecoration: 'none'
     },
     noResultsLabel: {
         paddingTop: '10px',
@@ -58,7 +62,7 @@ const ordinalSearchStyles = {
         marginLeft: '16px',
         marginRight: '17px',
         height: '46px',
-        borderRadius: '12px'
+        borderRadius: '10px'
     },   
 }
 
@@ -80,6 +84,41 @@ const ordinalDetailStyles = {
         marginLeft: '27px',
         width: '9px',
         height: '16px'
+    },
+    inscriptionLabel: {
+        marginBottom: '17px',
+        marginTop: '24px',
+        marginLeft: '17px'
+    },
+    metadataLabel: {
+        marginLeft: '18px',
+        marginBottom: '8px',
+        fontSize: '12px',
+        color: 'rgba(255, 255, 255, 0.7)'
+    },
+    metadataField: {
+        fontSize: '14px',
+        marginLeft: '18px',
+        width: 'calc(100% - 64px)',
+        wordBreak: 'break-all',
+    },
+    attributeField: {
+        fontSize: '14px',
+        marginLeft: '18px',
+        width: 'calc(100% - 64px)',
+        wordBreak: 'break-all',
+        paddingTop: '11px',
+        paddingBottom: '12px'
+    },
+    attributeContainer: {
+        background: '#24252C',
+        borderRadius: '8px',
+        height: '40px',
+    },
+    attributesLabel: {
+        marginTop: '24px',
+        marginLeft: '17px',
+        marginBottom: '33px'
     }
 }
 
