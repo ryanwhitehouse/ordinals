@@ -1,15 +1,17 @@
 import { useState } from "react";
-import fakeData from './fakeData.json'
+import { getAddressData } from './ordinalApi'
+
 import { ordinalSearchStyles } from './styles'
 import './index.css';
 
 function OrdinalSearch() {
   const [address, setAddress] = useState()
-  const [searchResults, setSearchResults] = useState()
+  const [searchResults, setSearchResults] = useState(null)
 
-  const handleLookup = () => {
+  const handleLookup = async () => {
     // const addressDataDecoded = JSON.parse(fakeData.addressData)
-    const addressDataDecoded = fakeData.addressData
+    const addressDataDecoded = await getAddressData()
+
     setSearchResults(addressDataDecoded)
   }
 
@@ -22,11 +24,17 @@ function OrdinalSearch() {
 
       <button style={ordinalSearchStyles.lookupButton} onClick={handleLookup}>Look up</button>
 
-    {searchResults && 
+    {searchResults && searchResults.length > 0 &&
       <div>
         <div style={ordinalSearchStyles.resultsLabel}>Results</div>
 
         <p>{searchResults?.map(result => result.txid + '\n')}</p>
+      </div>
+    }
+
+    {searchResults && searchResults.length <= 0 &&
+      <div>
+        <div style={ordinalSearchStyles.noResultsLabel}>No results found</div>
       </div>
     }
     </div>

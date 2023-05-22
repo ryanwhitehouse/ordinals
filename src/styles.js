@@ -37,6 +37,12 @@ const ordinalSearchStyles = {
         paddingTop: '10px',
         paddingLeft: '21px',
         fontSize: '14px'
+    },
+    noResultsLabel: {
+        paddingTop: '10px',
+        paddingLeft: '21px',
+        fontSize: '18px',
+        textAlign: 'center'
     }
 }
 
