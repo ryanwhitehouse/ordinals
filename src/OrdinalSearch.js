@@ -16,7 +16,7 @@ function OrdinalSearch() {
 
   const [address, setAddress] = useState(addressFromPrevious)
 
-  const { isIdle, data: searchResults, refetch } = useQuery(['ordinal-search', address], () => {
+  const { isIdle, data: searchResults, refetch } = useQuery(['ordinalSearch', address], () => {
       return getOrdinalData(address)
   }, {
     // The query will not execute until the userId exists

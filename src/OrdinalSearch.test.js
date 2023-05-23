@@ -18,12 +18,12 @@ test('allows search', async () => {
   const {user} = setup(<App />);
   const inputElement = screen.getByText(/owner bitcoin address/i);
 
-  expect(screen.queryByText(/^results$/i)).not.toBeInTheDocument();
+  expect(screen.queryByText(/results/i)).not.toBeInTheDocument();
 
   await user.type(inputElement, 'test')
   await user.click(screen.getByRole('button', {name: /look up/i}))
   
-  expect(screen.getByText(/^results$/i)).toBeInTheDocument();
+  expect(screen.getByText(/results/i)).toBeInTheDocument();
 });
 
 test('search calls API', async () => {

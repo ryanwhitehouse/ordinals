@@ -27,6 +27,15 @@ const ordinalResultStyles = {
         marginRight: '27px',
         width: '9px',
         height: '16px'
+    },
+    image: {
+        height: '30px',
+        width: '30px'
+    },
+    imageContainer: {
+        marginLeft: '20px',
+        height: '30px',
+        width: '30px'
     }
 }
 
