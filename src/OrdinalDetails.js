@@ -32,7 +32,7 @@ const OrdinalDetails = () => {
         return getOrdinalDetails(ordinalId)
     });
 
-    const { loading: imageLoading, error: imageError, data: imageData } = useQuery([`ordinal-details-image-${ordinalId}`], () => {
+    const { loading: imageLoading, error: imageError, data: imageData } = useQuery(['ordinalDetailsImage', ordinalId], () => {
         return getOrdinalImageDetails(ordinalId)
     });
 
@@ -44,7 +44,7 @@ const OrdinalDetails = () => {
         <div>
             <div style={ordinalDetailStyles.detailsHeaderContainer}>
                 <div style={ordinalDetailStyles.detailsHeaderTextContainer}>
-                    <a style={ordinalDetailStyles.chevronLeft} href="/">
+                    <a style={ordinalDetailStyles.chevronLeft} href={data?.metadata?.address ? `/?address=${data?.metadata?.address}`: '/'}>
                         <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M8.5 1L1.5 8L8.5 15" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>

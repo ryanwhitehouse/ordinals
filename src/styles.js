@@ -9,7 +9,8 @@ const ordinalResultStyles = {
     },
     link: {
         color: '#fff',
-        textDecoration: 'none'
+        textDecoration: 'none',
+        cursor: 'pointer'
     },
     noResultsLabel: {
         paddingTop: '10px',

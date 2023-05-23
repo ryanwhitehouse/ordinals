@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getOrdinalData } from './ordinalApi'
 
 import Results from './Results'
+
+import { useSearchParams } from "react-router-dom";
 
 import { ordinalSearchStyles } from './styles'
 import './index.css';
 
 function OrdinalSearch() {
-  const [address, setAddress] = useState()
+  let [searchParams] = useSearchParams();
+  const addressFromPrevious = searchParams.get('address');
+
+  const [address, setAddress] = useState(addressFromPrevious)
   const [searchResults, setSearchResults] = useState(null)
 
   const handleLookup = async () => {
@@ -15,6 +20,12 @@ function OrdinalSearch() {
 
     setSearchResults(addressData)
   }
+
+  useEffect(() => {
+    if (address) {
+      handleLookup()
+    }
+  }, [])
 
   return (
     <div>
