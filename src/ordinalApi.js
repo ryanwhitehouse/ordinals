@@ -18,16 +18,7 @@ const checkOrdinalData = async (transactionId, outputIndex) => {
 }
 
 const getOrdinalData = async (address) => {
-    const data = await getAddressData(address)
-
-    // TODO: This will need changing to handle large data sets (pagination?)
-    const ordinalData = await Promise.all(data.map(async txRow => {
-        const ordinalData = await checkOrdinalData(txRow.txid, txRow.vout)
-
-        return ordinalData
-    }))
-
-    return ordinalData.filter(x => x.id)
+    return getAddressData(address)
 }
 
 const getOrdinalDetails = async (ordinalId) => {
@@ -46,4 +37,4 @@ const getOrdinalImageDetails = async (ordinalId) => {
     return response
 }
 
-export { getAddressData, getOrdinalData, getOrdinalDetails, getOrdinalImageDetails }
+export { getAddressData, getOrdinalData, getOrdinalDetails, getOrdinalImageDetails, checkOrdinalData }

@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { useQuery } from '@tanstack/react-query';
+
 import { getOrdinalData } from './ordinalApi'
 
 import Results from './Results'
@@ -13,17 +15,17 @@ function OrdinalSearch() {
   const addressFromPrevious = searchParams.get('address');
 
   const [address, setAddress] = useState(addressFromPrevious)
-  const [searchResults, setSearchResults] = useState(null)
 
-  const handleLookup = async () => {
-    const addressData = await getOrdinalData(address)
-
-    setSearchResults(addressData)
-  }
+  const { isIdle, data: searchResults, refetch } = useQuery(['ordinal-search', address], () => {
+      return getOrdinalData(address)
+  }, {
+    // The query will not execute until the userId exists
+    enabled: false,
+  });
 
   useEffect(() => {
     if (address) {
-      handleLookup()
+      refetch()
     }
   }, [])
 
@@ -34,9 +36,9 @@ function OrdinalSearch() {
       <label htmlFor="addressInput" style={ordinalSearchStyles.addressLabel}>Owner Bitcoin Address</label>      
       <input id="addressInput" type="text" style={ordinalSearchStyles.addressInput} value={address} onChange={(e) => setAddress(e.target.value)} />
 
-      <button style={ordinalSearchStyles.lookupButton} onClick={handleLookup}>Look up</button>
+      <button style={ordinalSearchStyles.lookupButton} onClick={refetch}>Look up</button>
 
-      <Results searchResults={searchResults} />
+      { !isIdle && <Results searchResults={searchResults} /> }
     </div>
   );
 }
